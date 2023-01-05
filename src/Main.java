@@ -1,7 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     static void testStr() {
+        System.out.println("Введите имя");
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
         if (s.equals("Вячеслав")) {
@@ -10,30 +12,46 @@ public class Main {
             System.out.println("Нет такого имени");
         }
     }
+
     static void testInt() {
+        System.out.println("Введите число.");
         Scanner scanner = new Scanner(System.in);
         int x = scanner.nextInt();
-        if (x == 7) {
+        if (x > 7) {
             System.out.println("Привет");
         }
     }
-    static void checkArray() {
-        int[] myArray = {1,2,5,6,7,8,9,34,56,58,32,12,667,86676,324234,1232323,21};
-        for (int i = 0; i < myArray.length; i++) {
-            if(myArray[i]%3==0){System.out.println(myArray[i]);}
 
+    static void checkArray() {
+        ArrayList<Integer> array = new ArrayList();
+        Scanner reader = new Scanner(System.in);
+        {
+            System.out.println("Ввидите числа: ");
+            while (reader.hasNextInt()) {
+                array.add(reader.nextInt());
+            }
         }
-    }
-        public static void main (String[]args){
-            testStr();
-            testInt();
-            checkArray();
+
+        System.out.print("Введенные числа кратные 3: \n");
+        for (int number : array) {
+            if (number % 3 == 0) System.out.print(number + "\n");
         }
+        System.out.println();
     }
+
+
+    public static void main(String[] args) {
+        testStr();
+        testInt();
+        checkArray();
+    }
+}
 /*Дана скобочная последовательность: [((())()(())]]
 - Можно ли считать эту последовательность правильной?
 - Если ответ на предыдущий вопрос “нет” - то что необходимо в ней изменить, чтоб она стала правильной?
 
 Ответ: нет, нельзя
-Правильный ответ: [(((((())))))]
+Правильный ответ: [(((((())))))] - по-моему мнению, дана логическа последовательность скобок, таким образом на
+каждую открывающую скобку должна быть закрывающая.
  */
+
